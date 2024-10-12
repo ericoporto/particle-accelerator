@@ -2171,6 +2171,24 @@
                 <Width>160</Width>
                 <ZOrder>0</ZOrder>
               </GUILabel>
+              <GUILabel>
+                <Clickable>True</Clickable>
+                <Enabled>True</Enabled>
+                <Font>2</Font>
+                <Height>11</Height>
+                <ID>1</ID>
+                <Left>112</Left>
+                <Locked>False</Locked>
+                <Name>Label1</Name>
+                <Text xml:space="preserve">click me!</Text>
+                <TextAlignment>Left</TextAlignment>
+                <TextColor>63425</TextColor>
+                <Top>10</Top>
+                <Translated>True</Translated>
+                <Visible>True</Visible>
+                <Width>52</Width>
+                <ZOrder>1</ZOrder>
+              </GUILabel>
             </Controls>
           </GUIMain>
         </GUIs>
