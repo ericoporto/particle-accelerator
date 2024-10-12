@@ -47,7 +47,7 @@ struct Emitter {
   protected int emitParticleCount;
   protected int particleCount;
   protected int sprite; // The sprite slot to use for particles
-  protected int gravity; // Gravity for particles
+  protected int gravity;
   protected Particle* particles[]; // Pool of particles
   protected ParticleDefinition* definitions[]; // Array of particle definitions
   protected int definitionsCount; // Count of particle definitions
