@@ -23,7 +23,7 @@ managed struct Particle {
     int overlayIndex; // This refers to the overlay in the overlay pool
     float vx; // x velocity
     float vy; // y velocity
-    float gravity; // gravity effect
+    float gravity; // this is vertical acceleration downwards
     int transparency;
     int width;
     int height;
