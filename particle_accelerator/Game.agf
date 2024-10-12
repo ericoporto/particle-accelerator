@@ -2133,6 +2133,46 @@
               </GUILabel>
             </Controls>
           </GUIMain>
+          <GUIMain>
+            <NormalGUI>
+              <BackgroundColor>16384</BackgroundColor>
+              <BackgroundImage>0</BackgroundImage>
+              <BorderColor>65520</BorderColor>
+              <Clickable>True</Clickable>
+              <Height>20</Height>
+              <ID>9</ID>
+              <Left>80</Left>
+              <Name>gParticle</Name>
+              <OnClick>gParticle_OnClick</OnClick>
+              <PopupStyle>Normal</PopupStyle>
+              <PopupYPos>0</PopupYPos>
+              <Top>40</Top>
+              <Transparency>20</Transparency>
+              <Visible>True</Visible>
+              <Width>160</Width>
+              <ZOrder>0</ZOrder>
+            </NormalGUI>
+            <Controls>
+              <GUILabel>
+                <Clickable>True</Clickable>
+                <Enabled>True</Enabled>
+                <Font>1</Font>
+                <Height>18</Height>
+                <ID>0</ID>
+                <Left>2</Left>
+                <Locked>False</Locked>
+                <Name>lbl_particle_selected</Name>
+                <Text xml:space="preserve">New Label</Text>
+                <TextAlignment>Center</TextAlignment>
+                <TextColor>65535</TextColor>
+                <Top>2</Top>
+                <Translated>True</Translated>
+                <Visible>True</Visible>
+                <Width>160</Width>
+                <ZOrder>0</ZOrder>
+              </GUILabel>
+            </Controls>
+          </GUIMain>
         </GUIs>
       </GUIFolder>
     </GUIs>
