@@ -13,6 +13,10 @@ managed struct ParticleDefinition {
     int finalWidth; // Final width
     int initialHeight; // Initial height
     int finalHeight; // Final height
+    bool groundHitBounces;
+    int groundY;
+    int groundX;
+    int groundWidth;
 };
 
 managed struct Particle {
@@ -33,6 +37,10 @@ managed struct Particle {
     int finalWidth; 
     int initialHeight; 
     int finalHeight;
+    bool bounces;
+    int groundY;
+    int groundX;
+    int groundWidth;
 
     // Initialize the particle with its position, life, velocity, and transparency
     import void Init(ParticleDefinition* def, int x, int y, int overlayIndex);
