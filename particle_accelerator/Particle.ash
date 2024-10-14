@@ -77,5 +77,15 @@ struct Emitter {
   import void Update();
 };
 
+struct ContinuousEmitter extends Emitter {
+  protected int emitRate;
+  protected int _emitRateFrame;
+  protected bool isEmitting;
+
+  import void StartEmitting(int emitRate = 11);
+  import void StopEmitting();
+  import void UpdateContinuous();
+};
+
 /// Global Particle Emitter
-import Emitter GPE;
+import ContinuousEmitter GPE;
