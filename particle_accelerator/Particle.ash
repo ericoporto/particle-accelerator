@@ -68,7 +68,7 @@ struct Emitter {
   /// Emit a specific particle
   import protected bool EmitParticleIndex(int i);
   /// Emit a single particle
-  import protected void EmitSingleParticle();
+  import protected bool EmitSingleParticle();
   /// Emit particles
   import void Emit();
   /// Update all particles
