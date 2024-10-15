@@ -21,6 +21,7 @@ managed struct ParticleDefinition {
 };
 
 managed struct Particle {
+  int sprite;
   int x;
   int y;
   int life;
@@ -33,11 +34,11 @@ managed struct Particle {
   int width;
   int height;
   int initialTransparency; 
-  int finalTransparency; 
+  int deltaTransparency; 
   int initialWidth; 
-  int finalWidth; 
+  int deltaWidth; 
   int initialHeight; 
-  int finalHeight;
+  int deltaHeight;
   bool bounces;
   int groundY;
   int groundX;
