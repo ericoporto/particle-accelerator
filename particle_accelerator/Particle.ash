@@ -33,11 +33,11 @@ managed struct Particle {
   int transparency;
   int width;
   int height;
-  int initialTransparency; 
-  int deltaTransparency; 
-  int initialWidth; 
-  int deltaWidth; 
-  int initialHeight; 
+  int initialTransparency;
+  int deltaTransparency;
+  int initialWidth;
+  int deltaWidth;
+  int initialHeight;
   int deltaHeight;
   bool bounces;
   int groundY;
@@ -68,9 +68,9 @@ struct Emitter {
   /// Emit a specific particle
   import protected bool EmitParticleIndex(int i);
   /// Emit a single particle
-  import protected void EmitSingleParticle();  
+  import protected void EmitSingleParticle();
   /// Emit particles
-  import void Emit(); 
+  import void Emit();
   /// Update all particles
   import void Update();
 };
