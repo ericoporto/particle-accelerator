@@ -41,8 +41,6 @@ managed struct Particle {
   int deltaHeight;
   bool bounces;
   int groundY;
-  int groundX;
-  int groundWidth;
 
   // Initialize the particle with its position, life, velocity, and transparency
   import void Init(ParticleDefinition* def, int x, int y, int overlayIndex);
