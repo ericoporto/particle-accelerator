@@ -21,14 +21,14 @@ managed struct ParticleDefinition {
 };
 
 managed struct Particle {
-  float x;
-  float y;
+  int x;
+  int y;
   int life;
   int initialLife;
   int overlayIndex; // This refers to the overlay in the overlay pool
-  float vx; // x velocity
-  float vy; // y velocity
-  float gravity; // this is vertical acceleration downwards
+  int vx; // x velocity
+  int vy; // y velocity
+  int gravity; // this is vertical acceleration downwards
   int transparency;
   int width;
   int height;
@@ -57,6 +57,7 @@ struct Emitter {
   protected Particle* particles[]; // Pool of particles
   protected ParticleDefinition* definitions[]; // Array of particle definitions
   protected int definitionsCount; // Count of particle definitions
+  protected int lastEmittedParticle;
   
   /// Set emitter possible particle definitions
   import void SetParticleDefinitions(ParticleDefinition* definitions[], int definitionsCount);
@@ -65,8 +66,10 @@ struct Emitter {
 
   /// Initialize the emitter
   import void Init(int x, int y, ParticleDefinition* definitions[], int definitionsCount, int emitParticleCount = 10, int particleCount = 50);
+  /// Emit a specific particle
+  import protected bool EmitParticleIndex(int i);
   /// Emit a single particle
-  import void EmitSingleParticle();  
+  import protected void EmitSingleParticle();  
   /// Emit particles
   import void Emit(); 
   /// Update all particles
