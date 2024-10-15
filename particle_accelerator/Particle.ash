@@ -8,6 +8,8 @@ managed struct ParticleDefinition {
   int vx;      // mili Velocity in x direction
   int vy;      // mili Velocity in y direction
   int gravity; // mili Gravity effect on the particle
+  int initialSprite;
+  int finalSprite;
   int initialTransparency; // Initial transparency
   int finalTransparency; // Final transparency
   int initialWidth; // Initial width
@@ -16,8 +18,6 @@ managed struct ParticleDefinition {
   int finalHeight; // Final height
   bool groundHitBounces;
   int groundY;
-  int groundX;
-  int groundWidth;
 };
 
 managed struct Particle {
@@ -33,6 +33,9 @@ managed struct Particle {
   int transparency;
   int width;
   int height;
+  int initialSprite;
+  int rollSprite;
+  int deltaSprite;
   int initialTransparency;
   int deltaTransparency;
   int initialWidth;
