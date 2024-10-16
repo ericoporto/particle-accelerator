@@ -24,6 +24,8 @@ managed struct Particle {
   int sprite;
   int x;
   int y;
+  int mx;
+  int my;
   int life;
   int initialLife;
   int overlayIndex; // This refers to the overlay in the overlay pool
@@ -49,6 +51,8 @@ managed struct Particle {
   import void Init(ParticleDefinition* def, int x, int y, int overlayIndex);
   import void Update(); // Update particle position and overlay
   import bool IsAlive(); // Check if particle is still alive
+  import bool IsCollidingPoint(int x, int y);
+  import bool IsCollidingRect(int x, int y, int width, int height);
 };
 
 struct Emitter {
@@ -65,6 +69,10 @@ struct Emitter {
   import void SetParticleDefinitions(ParticleDefinition* definitions[], int definitionsCount);
   /// Update emitter position
   import void SetPosition(int x, int y);
+  /// Get null terminated array of particles that have collision with the point
+  import Particle* [] GetParticlesCollidingPoint(int x, int y);
+  
+  import Particle* [] GetParticlesCollidingRect(int x, int y, int width, int height);
 
   /// Initialize the emitter
   import void Init(int x, int y, ParticleDefinition* definitions[], int definitionsCount, int emitParticleCount = 10, int particleCount = 50);
