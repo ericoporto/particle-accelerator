@@ -18,6 +18,11 @@ managed struct ParticleDefinition {
   int finalHeight; // Final height
   bool groundHitBounces;
   int groundY;
+#ifdef SCRIPT_API_v400
+  BlendMode BlendMode;
+  float rotationSpeed;
+  float angle;
+#endif
 };
 
 managed struct Particle {
@@ -46,6 +51,10 @@ managed struct Particle {
   int deltaHeight;
   bool bounces;
   int groundY;
+#ifdef SCRIPT_API_v400
+  float rotationSpeed;
+  float angle;
+#endif
 
   // Initialize the particle with its position, life, velocity, and transparency
   import void Init(ParticleDefinition* def, int x, int y, int overlayIndex);
