@@ -62,7 +62,7 @@ managed struct Particle {
   /// returns true if particle rect overlaps rect
   import bool HitsRect(int x, int y, int width, int height);
   // private stuff
-  import void _Init(ParticleDefinition * def, int x, int y, int overlayIndex); // $AUTOCOMPLETEIGNORE$
+  import void _Init(ParticleDefinition * def, int x, int y, Overlay* ovr); // $AUTOCOMPLETEIGNORE$
   import void _Update(); // $AUTOCOMPLETEIGNORE$
 };
 
