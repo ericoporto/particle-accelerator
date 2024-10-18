@@ -29,8 +29,8 @@ managed struct Particle {
   int sprite;
   int x;
   int y;
-  int mx;
-  int my;
+  protected int mx; // mili x (~1000 times x)
+  protected int my; // mili y (~1000 times y)
   int life;
   int initialLife;
   int overlayIndex; // This refers to the overlay in the overlay pool
@@ -55,13 +55,15 @@ managed struct Particle {
   float rotationSpeed;
   float angle;
   #endif
-
-  // Initialize the particle with its position, life, velocity, and transparency
-  import void Init(ParticleDefinition * def, int x, int y, int overlayIndex);
-  import void Update(); // Update particle position and overlay
-  import bool IsAlive(); // Check if particle is still alive
-  import bool IsCollidingPoint(int x, int y);
-  import bool IsCollidingRect(int x, int y, int width, int height);
+  /// returns true if particle is alive
+  import bool IsAlive();
+  /// returns true if particle rect overlaps point
+  import bool HitsPoint(int x, int y);
+  /// returns true if particle rect overlaps rect
+  import bool HitsRect(int x, int y, int width, int height);
+  // private stuff
+  import void _Init(ParticleDefinition * def, int x, int y, int overlayIndex); // $AUTOCOMPLETEIGNORE$
+  import void _Update(); // $AUTOCOMPLETEIGNORE$
 };
 
 struct Emitter {
