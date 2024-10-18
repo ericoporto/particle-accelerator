@@ -67,6 +67,24 @@ managed struct Particle {
 };
 
 struct Emitter {
+  /// Set emitter possible particle definitions
+  import void SetParticleDefinitions(ParticleDefinition * definitions[], int definitionsCount);
+  /// Update emitter position
+  import void SetPosition(int x, int y);
+  /// Get null terminated array of particles that overlaps with the point
+  import Particle * [] ParticlesHitPoint(int x, int y);
+  /// Get null terminated array of particles that overlaps with the rect
+  import Particle * [] ParticlesHitRect(int x, int y, int width, int height);
+
+  /// Initialize the emitter
+  import void Init(int x, int y, ParticleDefinition * defs[], int defCount, int emitCount = 10, int maxParticles = 50);
+  /// Emit particles
+  import void Emit();
+  /// Update all particles
+  import void Update();
+  
+  import protected bool EmitParticleIndex(int i);
+  import protected bool EmitSingleParticle();
   protected int x;
   protected int y;
   protected int emitCount;
@@ -75,26 +93,6 @@ struct Emitter {
   protected ParticleDefinition * definitions[]; // Array of particle definitions
   protected int definitionsCount; // Count of particle definitions
   protected int lastEmittedParticle;
-
-  /// Set emitter possible particle definitions
-  import void SetParticleDefinitions(ParticleDefinition * definitions[], int definitionsCount);
-  /// Update emitter position
-  import void SetPosition(int x, int y);
-  /// Get null terminated array of particles that have collision with the point
-  import Particle * [] ParticlesHitPoint(int x, int y);
-
-  import Particle * [] ParticlesHitRect(int x, int y, int width, int height);
-
-  /// Initialize the emitter
-  import void Init(int x, int y, ParticleDefinition * definitions[], int definitionsCount, int emitParticleCount = 10, int particleCount = 50);
-  /// Emit a specific particle
-  import protected bool EmitParticleIndex(int i);
-  /// Emit a single particle
-  import protected bool EmitSingleParticle();
-  /// Emit particles
-  import void Emit();
-  /// Update all particles
-  import void Update();
 };
 
 struct ContinuousEmitter extends Emitter {
