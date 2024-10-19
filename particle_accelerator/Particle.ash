@@ -96,11 +96,13 @@ struct Emitter {
 };
 
 struct ContinuousEmitter extends Emitter {
-  protected int emitRate;
-  protected int _emitRateFrame;
+  protected int emitInterval;
+  protected int _emitCooldown;
   protected bool isEmitting;
 
-  import void StartEmitting(int emitRate = 11);
+  /// Continuous Emitter is on and each time a number of loops in emitInterval passes, it will emit particles. 
+  import void StartEmitting(int emitInterval = 11);
+  /// Continuous Emitter is off and will stop emitting.
   import void StopEmitting();
   import void UpdateContinuous();
 };
