@@ -46,42 +46,48 @@ managed struct ParticleDefinition {
 };
 
 managed struct Particle {
-  int Sprite;
-  int X;
-  int Y;
-  protected int mx; // mili x (~1000 times x)
-  protected int my; // mili y (~1000 times y)
-  int life;
-  int initialLife;
-  int overlayIndex; // This refers to the overlay in the overlay pool
-  int VelX; // x velocity
-  int VelY; // y velocity
-  int Gravity; // this is vertical acceleration downwards
-  int Transparency;
-  int Width;
-  int Height;
-  int SpriteBegin;
-  int rollSprite;
-  int SpriteDelta;
-  int TransparencyBegin;
-  int TransparencyDelta;
-  int WidthBegin;
-  int WidthDelta;
-  int HeightBegin;
-  int HeightDelta;
-  bool Bounces;
-  int GroundY;
-  #ifdef SCRIPT_API_v400
-  float RotationSpeed;
-  float Angle;
-  #endif
-  /// returns true if particle is alive
+  /// The particle life, it decrements on each update. When life goes to zero or below the particle is considered dead.
+  int Life;  
+  /// returns true if particle is alive (Life above 0)
   import bool IsAlive();
   /// returns true if particle rect overlaps point
   import bool HitsPoint(int x, int y);
   /// returns true if particle rect overlaps rect
   import bool HitsRect(int x, int y, int width, int height);
+  
   // private stuff
+  protected int X;
+  protected int Y;
+  protected int MiliX; // mili x (~1000 times x)
+  protected int MiliY; // mili y (~1000 times y)
+  protected int Sprite;
+  protected int InitialLife;
+  protected int VelX; // x velocity
+  protected int VelY; // y velocity
+  protected int Gravity; // this is vertical acceleration downwards
+  protected int Transparency;
+  protected int Width;
+  protected int Height;
+  protected int SpriteBegin;
+  protected int SpriteCycleOffset;
+  protected int SpriteDelta;
+  protected int TransparencyBegin;
+  protected int TransparencyDelta;
+  protected int WidthBegin;
+  protected int WidthDelta;
+  protected int HeightBegin;
+  protected int HeightDelta;
+  protected bool Bounces;
+  protected int GroundY;
+  #ifdef SCRIPT_API_v400
+  protected float RotationSpeed;
+  protected float Angle;
+  #endif
+  
+  import protected void _SyncOverlay(Overlay* ovr); // $AUTOCOMPLETEIGNORE$
+  
+  // these are not actual public interface and should not be used or relied
+  int overlayIndex; // This refers to the overlay in the overlay pool
   import void _Init(ParticleDefinition * def, int x, int y, Overlay* ovr); // $AUTOCOMPLETEIGNORE$
   import void _Update(); // $AUTOCOMPLETEIGNORE$
 };
