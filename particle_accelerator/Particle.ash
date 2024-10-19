@@ -1,32 +1,32 @@
 // new module header
 
 managed struct ParticleDefinition {
-  int sprite;
+  int Sprite;
   int offsetX; // Offset from the emitter position
   int offsetY; // Offset from the emitter position
   int life; // Lifetime of the particle
   int vx; // mili Velocity in x direction
   int vy; // mili Velocity in y direction
   int gravity; // mili Gravity effect on the particle
-  int initialSprite;
-  int finalSprite;
-  int initialTransparency; // Initial transparency
-  int finalTransparency; // Final transparency
-  int initialWidth; // Initial width
-  int finalWidth; // Final width
-  int initialHeight; // Initial height
-  int finalHeight; // Final height
-  bool groundHitBounces;
-  int groundY;
+  int SpriteBegin;
+  int SpriteEnd;
+  int TransparencyBegin; // Initial Transparency
+  int TransparencyEnd; // Final Transparency
+  int WidthBegin; // Initial Width
+  int WidthEnd; // Final Width
+  int HeightBegin; // Initial Height
+  int HeightEnd; // Final Height
+  bool Bounces;
+  int GroundY;
   #ifdef SCRIPT_API_v400
   BlendMode BlendMode;
-  float rotationSpeed;
-  float angle;
+  float RotationSpeed;
+  float Angle;
   #endif
 };
 
 managed struct Particle {
-  int sprite;
+  int Sprite;
   int x;
   int y;
   protected int mx; // mili x (~1000 times x)
@@ -37,23 +37,23 @@ managed struct Particle {
   int vx; // x velocity
   int vy; // y velocity
   int gravity; // this is vertical acceleration downwards
-  int transparency;
-  int width;
-  int height;
-  int initialSprite;
+  int Transparency;
+  int Width;
+  int Height;
+  int SpriteBegin;
   int rollSprite;
-  int deltaSprite;
-  int initialTransparency;
-  int deltaTransparency;
-  int initialWidth;
-  int deltaWidth;
-  int initialHeight;
-  int deltaHeight;
-  bool bounces;
-  int groundY;
+  int SpriteDelta;
+  int TransparencyBegin;
+  int TransparencyDelta;
+  int WidthBegin;
+  int WidthDelta;
+  int HeightBegin;
+  int HeightDelta;
+  bool Bounces;
+  int GroundY;
   #ifdef SCRIPT_API_v400
-  float rotationSpeed;
-  float angle;
+  float RotationSpeed;
+  float Angle;
   #endif
   /// returns true if particle is alive
   import bool IsAlive();
