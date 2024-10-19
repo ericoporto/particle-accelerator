@@ -47,14 +47,14 @@ managed struct ParticleDefinition {
 
 managed struct Particle {
   /// The particle life, it decrements on each update. When life goes to zero or below the particle is considered dead.
-  int Life;  
+  int Life;
   /// returns true if particle is alive (Life above 0)
   import bool IsAlive();
   /// returns true if particle rect overlaps point
   import bool HitsPoint(int x, int y);
   /// returns true if particle rect overlaps rect
   import bool HitsRect(int x, int y, int width, int height);
-  
+
   // private stuff
   protected int X;
   protected int Y;
@@ -83,11 +83,9 @@ managed struct Particle {
   protected float RotationSpeed;
   protected float Angle;
   #endif
-  
-  import protected void _SyncOverlay(Overlay* ovr); // $AUTOCOMPLETEIGNORE$
-  
-  // these are not actual public interface and should not be used or relied
-  int overlayIndex; // This refers to the overlay in the overlay pool
+  import protected void _SyncOverlay(Overlay* ovr);
+  // these are not actual public interface and should not be used or relied upon
+  int OverlayIdx; // $AUTOCOMPLETEIGNORE$
   import void _Init(ParticleDefinition * def, int x, int y, Overlay* ovr); // $AUTOCOMPLETEIGNORE$
   import void _Update(); // $AUTOCOMPLETEIGNORE$
 };
