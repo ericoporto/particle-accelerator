@@ -47,8 +47,8 @@ managed struct ParticleDefinition {
 
 managed struct Particle {
   int Sprite;
-  int x;
-  int y;
+  int X;
+  int Y;
   protected int mx; // mili x (~1000 times x)
   protected int my; // mili y (~1000 times y)
   int life;
@@ -105,8 +105,8 @@ struct Emitter {
   
   import protected bool EmitParticleIndex(int i);
   import protected bool EmitSingleParticle();
-  protected int x;
-  protected int y;
+  protected int X;
+  protected int Y;
   protected int emitCount;
   protected int maxParticles;
   protected Particle * particles[]; // Pool of particles
