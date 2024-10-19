@@ -1,27 +1,47 @@
 // new module header
 
 managed struct ParticleDefinition {
+  /// The particle sprite. If SpriteBegin/End are set, it's the initial frame. 
   int Sprite;
-  int offsetX; // Offset from the emitter position
-  int offsetY; // Offset from the emitter position
-  int life; // Lifetime of the particle
-  int vx; // mili Velocity in x direction
-  int vy; // mili Velocity in y direction
-  int gravity; // mili Gravity effect on the particle
+  /// Horizontal Offset from the emitter position
+  int OffsetX;
+  /// Vertical Offset from the emitter position
+  int OffsetY;
+  /// The initial life of the particle, it's Lifetime in loops
+  int life;
+  /// Mili Velocity in X direction (horizontal).
+  int VelX; 
+  /// Mili Velocity in Y direction (vertical).
+  int VelY;
+  /// Mili Gravity (vertical acceleration).
+  int Gravity;
+  /// The initial sprite of a sequential Sprite range (see Sprite for initial frame).
   int SpriteBegin;
+  /// The final sprite of a sequential Sprite range.
   int SpriteEnd;
-  int TransparencyBegin; // Initial Transparency
-  int TransparencyEnd; // Final Transparency
-  int WidthBegin; // Initial Width
-  int WidthEnd; // Final Width
-  int HeightBegin; // Initial Height
-  int HeightEnd; // Final Height
+  /// Initial transparency, the Transparency when emitted.
+  int TransparencyBegin;
+  /// Final transparency, the Transparency when Particle life is zero.
+  int TransparencyEnd;
+  /// Initial width, the Width when emitted.
+  int WidthBegin;
+  /// Final width, the Width when Particle life is zero.
+  int WidthEnd;
+  /// Initial height, the Height when emitted.
+  int HeightBegin;
+  /// Final height, the Height when Particle life is zero.
+  int HeightEnd;
+  /// If the particle should bounce when it hits ground
   bool Bounces;
+  /// The ground level position for the particle (if unset assumes no ground exists)
   int GroundY;
   #ifdef SCRIPT_API_v400
+  /// The blend mode the particle should use
   BlendMode BlendMode;
-  float RotationSpeed;
+  /// The angle in degrees (0.0 to 360.0) the particle should be
   float Angle;
+  /// The speed that will increase the angle per loop
+  float RotationSpeed;
   #endif
 };
 
@@ -34,9 +54,9 @@ managed struct Particle {
   int life;
   int initialLife;
   int overlayIndex; // This refers to the overlay in the overlay pool
-  int vx; // x velocity
-  int vy; // y velocity
-  int gravity; // this is vertical acceleration downwards
+  int VelX; // x velocity
+  int VelY; // y velocity
+  int Gravity; // this is vertical acceleration downwards
   int Transparency;
   int Width;
   int Height;
