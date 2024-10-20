@@ -1,4 +1,25 @@
-// new module header
+// Particle Accelerator module header
+// Module to manage particles effects based on Overlays
+//
+//    +-------------------------+
+//    |        Emitter          |
+//    |-------------------------|       +--------------------+
+//    |  Array of Definitions   |<------| ParticleDefinition |
+//    |  Pool of Particles      |       +--------------------+
+//    +-------------------------+        (sprite, velocity, size, etc.)
+//                |
+//                |    Emits based on a random
+//                |   selection from definitions
+//                v
+//     +--------------------+
+//     |      Particle      |
+//     +--------------------+
+// 
+// The Emitter is how we will manage particles in this module.
+// It's responsible for a few things
+// 1. When emitting it randomly selects a ParticleDefinition and Spawns it;
+// 2. Updates the particle;
+// 3. Renders the particle as overlay until it's life ends.
 
 managed struct ParticleDefinition {
   /// The particle sprite. If SpriteBegin/End are set, it's the initial frame. 
