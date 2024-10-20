@@ -111,7 +111,7 @@ managed struct Particle {
 
 struct Emitter {
   /// Initialize the emitter
-  import void Init(int x, int y, ParticleDefinition * defs[], int defCount, int emitAmount = 10, int maxParticles = 50);
+  import void Init(int x, int y, ParticleDefinition * defs[], int defCount, int emitAmount, int maxParticles);
   /// Emit particles set in emitBurst, returns true if succeed emitting all particles
   import bool Emit();
   /// Update all particles
@@ -126,8 +126,6 @@ struct Emitter {
   import Particle * [] ParticlesHitRect(int x, int y, int width, int height);
 
   // private internals
-  import protected bool _EmitParticleIndex(int i);
-  import protected bool _EmitSingleParticle();
   protected int X;
   protected int Y;
   protected int EmitAmount;
@@ -136,6 +134,8 @@ struct Emitter {
   protected ParticleDefinition * definitions[]; // Array of particle definitions
   protected int definitionsCount; // Count of particle definitions
   protected int lastEmittedParticle;
+  import protected bool _EmitParticleIndex(int i);
+  import protected bool _EmitSingleParticle();
 };
 
 struct ContinuousEmitter extends Emitter {
@@ -143,7 +143,7 @@ struct ContinuousEmitter extends Emitter {
   protected int _emitCooldown;
   protected bool isEmitting;
 
-  /// Starts the emitter, emitting particles at regular intervals, in update loops.
+  /// Starts the emission of particles at regular intervals. Interval unit is in update loops.
   import void StartEmitting(int emitInterval = 11);
   /// Stops the emission of particles.
   import void StopEmitting();
