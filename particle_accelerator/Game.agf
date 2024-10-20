@@ -5691,10 +5691,10 @@
             <ScriptAndHeader_Script>
               <Script>
                 <FileName>Particle.asc</FileName>
-                <Name />
-                <Description />
-                <Author />
-                <Version />
+                <Name>ParticleAccelerator</Name>
+                <Description>Overlay based particle effects.</Description>
+                <Author>eri0o</Author>
+                <Version>0.1.0</Version>
                 <Key>568987560</Key>
                 <IsHeader>False</IsHeader>
               </Script>
