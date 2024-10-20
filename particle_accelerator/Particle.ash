@@ -7,7 +7,7 @@ managed struct ParticleDefinition {
   int OffsetX;
   /// Vertical Offset from the emitter position
   int OffsetY;
-  /// The initial life of the particle, it's Lifetime in loops
+  /// The initial life of the particle, it's Lifetime in update loops
   int life;
   /// Mili Velocity in X direction (horizontal).
   int VelX; 
@@ -40,22 +40,22 @@ managed struct ParticleDefinition {
   BlendMode BlendMode;
   /// The angle in degrees (0.0 to 360.0) the particle should be
   float Angle;
-  /// The speed that will increase the angle per loop
+  /// The speed that will increase the angle per update loop
   float RotationSpeed;
   #endif
 };
 
 managed struct Particle {
-  /// The particle life, it decrements on each update. When life goes to zero or below the particle is considered dead.
-  int Life;
-  /// returns true if particle is alive (Life above 0)
+  /// The particle life, it decrements on each update. It dies when life is equal or below zero.
+  import attribute int Life;
+  /// returns true if particle is alive
   import bool IsAlive();
   /// returns true if particle rect overlaps point
   import bool HitsPoint(int x, int y);
   /// returns true if particle rect overlaps rect
   import bool HitsRect(int x, int y, int width, int height);
 
-  // private stuff
+  // private internals
   protected int X;
   protected int Y;
   protected int MiliX; // mili x (~1000 times x)
@@ -83,14 +83,18 @@ managed struct Particle {
   protected float RotationSpeed;
   protected float Angle;
   #endif
-  import protected void _SyncOverlay(Overlay* ovr);
-  // these are not actual public interface and should not be used or relied upon
-  int OverlayIdx; // $AUTOCOMPLETEIGNORE$
-  import void _Init(ParticleDefinition * def, int x, int y, Overlay* ovr); // $AUTOCOMPLETEIGNORE$
-  import void _Update(); // $AUTOCOMPLETEIGNORE$
+  // not actual public interface and should not be used or relied upon
+  int _Life; // $AUTOCOMPLETEIGNORE$
+  int _OverlayIdx; // $AUTOCOMPLETEIGNORE$
 };
 
 struct Emitter {
+  /// Initialize the emitter
+  import void Init(int x, int y, ParticleDefinition * defs[], int defCount, int emitCount = 10, int maxParticles = 50);
+  /// Emit particles
+  import void Emit();
+  /// Update all particles
+  import void Update();
   /// Set emitter possible particle definitions
   import void SetParticleDefinitions(ParticleDefinition * definitions[], int definitionsCount);
   /// Update emitter position
@@ -100,15 +104,9 @@ struct Emitter {
   /// Get null terminated array of particles that overlaps with the rect
   import Particle * [] ParticlesHitRect(int x, int y, int width, int height);
 
-  /// Initialize the emitter
-  import void Init(int x, int y, ParticleDefinition * defs[], int defCount, int emitCount = 10, int maxParticles = 50);
-  /// Emit particles
-  import void Emit();
-  /// Update all particles
-  import void Update();
-  
-  import protected bool EmitParticleIndex(int i);
-  import protected bool EmitSingleParticle();
+  // private internals
+  import protected bool _EmitParticleIndex(int i);
+  import protected bool _EmitSingleParticle();
   protected int X;
   protected int Y;
   protected int emitCount;
