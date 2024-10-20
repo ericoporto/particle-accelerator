@@ -29,7 +29,7 @@ managed struct ParticleDefinition {
   /// Vertical Offset from the emitter position
   int OffsetY;
   /// The initial life of the particle, it's Lifetime in update loops
-  int life;
+  int LifeTotal;
   /// Horizontal mili velocity. It's in thousandths of a pixel per update, in X direction (e.g., 1000 moves 1 pixel to right per update).
   int VelX; 
   /// Vertical mili velocity. It's in thousandths of a pixel per update, in Y direction (e.g., -2000 moves 2 pixel upwards per update).
