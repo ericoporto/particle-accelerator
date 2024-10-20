@@ -90,9 +90,9 @@ managed struct Particle {
 
 struct Emitter {
   /// Initialize the emitter
-  import void Init(int x, int y, ParticleDefinition * defs[], int defCount, int emitCount = 10, int maxParticles = 50);
-  /// Emit particles
-  import void Emit();
+  import void Init(int x, int y, ParticleDefinition * defs[], int defCount, int emitBurst = 10, int maxParticles = 50);
+  /// Emit particles set in emitBurst, returns true if succeed emitting all particles
+  import bool Emit();
   /// Update all particles
   import void Update();
   /// Set emitter possible particle definitions
@@ -109,7 +109,7 @@ struct Emitter {
   import protected bool _EmitSingleParticle();
   protected int X;
   protected int Y;
-  protected int emitCount;
+  protected int EmitBurst;
   protected int maxParticles;
   protected Particle * particles[]; // Pool of particles
   protected ParticleDefinition * definitions[]; // Array of particle definitions
