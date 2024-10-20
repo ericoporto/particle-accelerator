@@ -9,9 +9,9 @@ managed struct ParticleDefinition {
   int OffsetY;
   /// The initial life of the particle, it's Lifetime in update loops
   int life;
-  /// Mili Velocity in X direction (horizontal).
+  /// Horizontal mili velocity. It's in thousandths of a pixel per update, in X direction (e.g., 1000 moves 1 pixel to right per update).
   int VelX; 
-  /// Mili Velocity in Y direction (vertical).
+  /// Vertical mili velocity. It's in thousandths of a pixel per update, in Y direction (e.g., -2000 moves 2 pixel upwards per update).
   int VelY;
   /// Mili Gravity (vertical acceleration).
   int Gravity;
@@ -40,7 +40,7 @@ managed struct ParticleDefinition {
   BlendMode BlendMode;
   /// The angle in degrees (0.0 to 360.0) the particle should be
   float Angle;
-  /// The speed that will increase the angle per update loop
+  /// The speed that will increase the angle in degrees per update loop
   float RotationSpeed;
   #endif
 };
@@ -50,9 +50,9 @@ managed struct Particle {
   import attribute int Life;
   /// returns true if particle is alive
   import bool IsAlive();
-  /// returns true if particle rect overlaps point
+  /// returns true if particle overlaps the given point. Particle is assumed a rectangle.
   import bool HitsPoint(int x, int y);
-  /// returns true if particle rect overlaps rect
+  /// returns true if particle overlaps the given rectangle. Particles is assumed a rectangle.
   import bool HitsRect(int x, int y, int width, int height);
 
   // private internals
@@ -90,7 +90,7 @@ managed struct Particle {
 
 struct Emitter {
   /// Initialize the emitter
-  import void Init(int x, int y, ParticleDefinition * defs[], int defCount, int emitBurst = 10, int maxParticles = 50);
+  import void Init(int x, int y, ParticleDefinition * defs[], int defCount, int emitAmount = 10, int maxParticles = 50);
   /// Emit particles set in emitBurst, returns true if succeed emitting all particles
   import bool Emit();
   /// Update all particles
@@ -99,9 +99,9 @@ struct Emitter {
   import void SetParticleDefinitions(ParticleDefinition * definitions[], int definitionsCount);
   /// Update emitter position
   import void SetPosition(int x, int y);
-  /// Get null terminated array of particles that overlaps with the point
+  /// Get null terminated array of particles that overlaps with the given point.
   import Particle * [] ParticlesHitPoint(int x, int y);
-  /// Get null terminated array of particles that overlaps with the rect
+  /// Get null terminated array of particles that overlaps with the given rectangle.
   import Particle * [] ParticlesHitRect(int x, int y, int width, int height);
 
   // private internals
@@ -109,7 +109,7 @@ struct Emitter {
   import protected bool _EmitSingleParticle();
   protected int X;
   protected int Y;
-  protected int EmitBurst;
+  protected int EmitAmount;
   protected int maxParticles;
   protected Particle * particles[]; // Pool of particles
   protected ParticleDefinition * definitions[]; // Array of particle definitions
@@ -122,9 +122,9 @@ struct ContinuousEmitter extends Emitter {
   protected int _emitCooldown;
   protected bool isEmitting;
 
-  /// Continuous Emitter is on and each time a number of loops in emitInterval passes, it will emit particles. 
+  /// Starts the emitter, emitting particles at regular intervals, in update loops.
   import void StartEmitting(int emitInterval = 11);
-  /// Continuous Emitter is off and will stop emitting.
+  /// Stops the emission of particles.
   import void StopEmitting();
   import void UpdateContinuous();
 };
