@@ -130,12 +130,14 @@ struct Emitter {
   protected int Y;
   protected int EmitAmount;
   protected int maxParticles;
+  protected String address;
   protected Particle * particles[]; // Pool of particles
   protected ParticleDefinition * definitions[]; // Array of particle definitions
   protected int definitionsCount; // Count of particle definitions
   protected int lastEmittedParticle;
   import protected bool _EmitParticleIndex(int i);
   import protected bool _EmitSingleParticle();
+  import protected bool _HandleRoomChanged();
 };
 
 struct ContinuousEmitter extends Emitter {
