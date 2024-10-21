@@ -130,7 +130,7 @@ struct Emitter {
   protected int Y;
   protected int EmitAmount;
   protected int maxParticles;
-  protected String address;
+  protected String uID;
   protected Particle * particles[]; // Pool of particles
   protected ParticleDefinition * definitions[]; // Array of particle definitions
   protected int definitionsCount; // Count of particle definitions
