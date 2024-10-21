@@ -138,6 +138,7 @@ struct Emitter {
   import protected bool _EmitParticleIndex(int i);
   import protected bool _EmitSingleParticle();
   import protected bool _HandleRoomChanged();
+  import protected ParticleDefinition* _GetRandomDefinition();
 };
 
 struct ContinuousEmitter extends Emitter {
