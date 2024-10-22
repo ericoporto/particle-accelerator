@@ -1,0 +1,56 @@
+name: CI
+
+on: [push, pull_request, workflow_dispatch]
+
+jobs:
+  build-and-test-windows:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: gets ags-toolbox
+        run: |
+          curl -Lo atbx.exe https://github.com/ericoporto/agstoolbox/releases/download/0.5.2/atbx.exe
+          echo "${{github.workspace}}" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+
+      - name: Install AGS
+        run: |
+          atbx install editor -q particles_demo/
+
+      - name: Build game
+        run: |
+          atbx build particles_demo/
+
+      - name: Export module
+        run: |
+          atbx export script particles_demo/ particles .
+
+      - name: Zip Game Project
+        run: |
+          Remove-Item -Recurse -Force particles_demo/Compiled/Data
+          Remove-Item -Force particles_demo/Game.agf.user
+          Compress-Archive -Path particles_demo/* -Destination particles_demo_windows.zip
+
+      - name: Upload Game and Project Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: particles_demo
+          path: |
+            particles_demo_windows.zip
+
+      - name: Upload Module Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: particles_module
+          path: |
+            particles.scm
+
+      - name: Create release and upload assets
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: particles.scm,particles_demo_windows.zip
+          allowUpdates: true
+          omitBodyDuringUpdate: true
+          token: ${{ secrets.GITHUB_TOKEN }}
