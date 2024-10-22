@@ -1,5 +1,5 @@
 // Particle Accelerator module header
-// Module to manage particles effects based on Overlays
+// Module to manage particle effects based on Overlays
 //
 //    +-------------------------+
 //    |        Emitter          |
@@ -20,9 +20,9 @@
 // - Particle: a logical simulation unit, it's kept in sync with an overlay for rendering;
 //
 // Emitter main actions
-// 1. Init: used to configure the emitter, must be done before anything
+// 1. Init: used to configure the emitter, must be done before anything else
 // 2. Emit: randomly select a ParticleDefinition and spawn a Particle with its properties;
-// 3. Update: run each particle logic and update it's corresponding overlay, until its life ends;
+// 3. Update: run each particle logic and update its corresponding overlay, until its life ends;
 //
 
 managed struct ParticleDefinition {
@@ -34,31 +34,31 @@ managed struct ParticleDefinition {
   int OffsetY;
   /// The initial life of the particle, it's Lifetime in update loops
   int LifeTotal;
-  /// Horizontal mili velocity. It's in thousandths of a pixel per update, in X direction (e.g., 1000 moves 1 pixel to right per update).
+  /// Horizontal milli velocity. It's in thousandths of a pixel per update, in X direction (e.g., 1000 moves 1 pixel to right per update).
   int VelX; 
-  /// Vertical mili velocity. It's in thousandths of a pixel per update, in Y direction (e.g., -2000 moves 2 pixel upwards per update).
+  /// Vertical milli velocity. It's in thousandths of a pixel per update, in Y direction (e.g., -2000 moves 2 pixels upwards per update).
   int VelY;
-  /// Mili Gravity (vertical acceleration).
+  /// Milli Gravity (vertical acceleration).
   int Gravity;
   /// The initial sprite of a sequential Sprite range (see Sprite for initial frame).
   int SpriteBegin;
   /// The final sprite of a sequential Sprite range.
   int SpriteEnd;
-  /// Initial transparency, the Transparency when emitted.
+  /// Initial transparency, the transparency when emitted.
   int TransparencyBegin;
-  /// Final transparency, the Transparency when Particle life is zero.
+  /// Final transparency, the transparency when the particle's life is zero.
   int TransparencyEnd;
-  /// Initial width, the Width when emitted.
+  /// Initial width, the width when emitted.
   int WidthBegin;
-  /// Final width, the Width when Particle life is zero.
+  /// Final width, the width when the particle's life is zero.
   int WidthEnd;
-  /// Initial height, the Height when emitted.
+  /// Initial height, the height when emitted.
   int HeightBegin;
-  /// Final height, the Height when Particle life is zero.
+  /// Final height, the height when the particle's life is zero.
   int HeightEnd;
   /// If the particle should bounce when it hits ground
   bool Bounces;
-  /// The ground level position for the particle (if unset assumes no ground exists)
+  /// The ground level position for the particle (if unset, assumes no ground exists)
   int GroundY;
   #ifdef SCRIPT_API_v400
   /// The blend mode the particle should use
@@ -75,16 +75,16 @@ managed struct Particle {
   import attribute int Life;
   /// returns true if particle is alive
   import bool IsAlive();
-  /// returns true if particle overlaps the given point. Particle is assumed a rectangle.
+  /// returns true if the particle overlaps the given point. The particle is assumed to be a rectangle.
   import bool HitsPoint(int x, int y);
-  /// returns true if particle overlaps the given rectangle. Particles is assumed a rectangle.
+  /// returns true if the particle overlaps the given rectangle. The particle is assumed to be a rectangle.
   import bool HitsRect(int x, int y, int width, int height);
 
   // private internals
   protected int X;
   protected int Y;
-  protected int MiliX; // mili x (~1000 times x)
-  protected int MiliY; // mili y (~1000 times y)
+  protected int MilliX; // milli x (~1000 times x)
+  protected int MilliY; // milli y (~1000 times y)
   protected int Sprite;
   protected int InitialLife;
   protected int VelX; // x velocity
