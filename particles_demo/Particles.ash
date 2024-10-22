@@ -4,9 +4,9 @@
 //
 //    +-------------------------+
 //    |        Emitter          |
-//    |-------------------------|       +--------------------+
-//    |  Array of Definitions   |<------| ParticleDefinition |
-//    |  Pool of Particles      |       +--------------------+
+//    |-------------------------|       +---------------------+
+//    |  Array of Definitions   |<------| Particle Definition |
+//    |  Pool of Particles      |       +---------------------+
 //    +-------------------------+        (sprite, velocity, size, etc.)
 //                |
 //                |    Emits based on a random
@@ -17,7 +17,7 @@
 //     +--------------------+
 // 
 // - Emitter: how we will manage particles in this module.
-// - ParticleDefinition: a description of particle behavior and visuals;
+// - Particle Definition: a description of particle behavior and visuals;
 // - Particle: a logical simulation unit, it's kept in sync with an overlay for rendering;
 //
 // Emitter main actions
