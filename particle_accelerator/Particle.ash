@@ -15,11 +15,15 @@
 //     |      Particle      |
 //     +--------------------+
 // 
-// The Emitter is how we will manage particles in this module.
-// It's responsible for a few things
-// 1. When emitting it randomly selects a ParticleDefinition and Spawns it;
-// 2. Updates the particle;
-// 3. Renders the particle as overlay until it's life ends.
+// - Emitter: how we will manage particles in this module.
+// - ParticleDefinition: a description of particle behavior and visuals;
+// - Particle: a logical simulation unit, it's kept in sync with an overlay for rendering;
+//
+// Emitter main actions
+// 1. Init: used to configure the emitter, must be done before anything
+// 2. Emit: randomly select a ParticleDefinition and spawn a Particle with its properties;
+// 3. Update: run each particle logic and update it's corresponding overlay, until its life ends;
+//
 
 managed struct ParticleDefinition {
   /// The particle sprite. If SpriteBegin/End are set, it's the initial frame. 
