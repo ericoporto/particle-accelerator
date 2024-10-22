@@ -54,3 +54,64 @@ function repeatedly_execute_always()
   emt.Update();
 }
 ```
+
+## Script API
+
+### Emitter
+
+This struct is the main way we will manage particles in this module.
+
+#### `Emitter.Init`
+```AGS Script
+void Emitter.Init(int x, int y, ParticleDefinition * defs[], int defCount, int emitAmount, int maxParticles);
+```
+
+Initializes the emitter, has to be run once, before invoking any other method from the emitter.
+
+You will pass the following parameters
+
+- a position (x, y) to place the emitter (it can be set later to other using SetPosition method)
+- an array of Particle Definitions, along with the size of this array
+- the amount of particles that should be emitted when calling Emit()
+- the maximum number of particles that should exist at the same time
+
+#### `Emitter.Update`
+```AGS Script
+void Emitter.Update();
+```
+
+This method will both run one step in the particle simulation and update their rendering on the screen using overlays.
+
+You normally run this once in repeatedly_execute_always, room_RepExec or some other method you use to run once per frame.
+
+#### `Emitter.Emit`
+```AGS Script
+bool Emitter.Emit();
+```
+
+Emits particles. The amount of particles emitted is the emitAmount set when you init the emitter.
+
+A random particle definition is selected from the set definitions arrays, and used to initialize each particle emitted individually.
+
+#### `Emitter.SetPosition`
+```AGS Script
+void Emitter.SetPosition(int x, int y);
+```
+
+Sets the position of the emitter on screen.
+
+#### `Emitter.SetDefinitions`
+```AGS Script
+void Emitter.SetDefinitions(ParticleDefinition * defs[], int defCount);
+```
+
+Sets the definitions hold by the emitter.
+
+### Particle
+
+TBD.
+
+### ParticleDefinition
+
+TBD
+
