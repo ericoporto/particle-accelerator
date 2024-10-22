@@ -1,4 +1,4 @@
-# particle-accelerator
+# Particles
 Particle Script Module for AGS
 
 ## Usage
