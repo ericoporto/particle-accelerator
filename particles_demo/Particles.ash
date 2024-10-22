@@ -16,7 +16,7 @@
 //     +--------------------+
 //     |      Particle      |
 //     +--------------------+
-// 
+//
 // - Emitter: how we will manage particles in this module.
 // - Particle Definition: a description of particle behavior and visuals;
 // - Particle: a logical simulation unit, it's kept in sync with an overlay for rendering;
@@ -28,7 +28,7 @@
 //
 
 managed struct ParticleDefinition {
-  /// The particle sprite. If SpriteBegin/End are set, it's the initial frame. 
+  /// The particle sprite. If SpriteBegin/End are set, it's the initial frame.
   int Sprite;
   /// Horizontal Offset from the emitter position
   int OffsetX;
@@ -37,7 +37,7 @@ managed struct ParticleDefinition {
   /// The initial life of the particle, it's Lifetime in update loops
   int LifeTotal;
   /// Horizontal milli velocity. It's in thousandths of a pixel per update, in X direction (e.g., 1000 moves 1 pixel to right per update).
-  int VelX; 
+  int VelX;
   /// Vertical milli velocity. It's in thousandths of a pixel per update, in Y direction (e.g., -2000 moves 2 pixels upwards per update).
   int VelY;
   /// Milli Gravity (vertical acceleration).
@@ -163,19 +163,19 @@ struct ContinuousEmitter extends Emitter {
 import ContinuousEmitter GPE;
 
 // MIT License
-// 
+//
 // Copyright (c) 2024 Érico Porto
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
 // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 // copies of the Software, and to permit persons to whom the Software is
 // furnished to do so, subject to the following conditions:
-// 
+//
 // The above copyright notice and this permission notice shall be included in all
 // copies or substantial portions of the Software.
-// 
+//
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 // FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
