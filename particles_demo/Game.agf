@@ -5683,7 +5683,7 @@
           <ScriptAndHeader>
             <ScriptAndHeader_Header>
               <Script>
-                <FileName>Particle.ash</FileName>
+                <FileName>Particles.ash</FileName>
                 <Name />
                 <Description />
                 <Author />
@@ -5694,8 +5694,8 @@
             </ScriptAndHeader_Header>
             <ScriptAndHeader_Script>
               <Script>
-                <FileName>Particle.asc</FileName>
-                <Name>ParticleAccelerator</Name>
+                <FileName>Particles.asc</FileName>
+                <Name>Particles</Name>
                 <Description>Overlay based particle effects.</Description>
                 <Author>eri0o</Author>
                 <Version>0.1.0</Version>

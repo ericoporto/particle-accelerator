@@ -1,4 +1,5 @@
-// Particle Accelerator module header
+// Particles module header
+// Version 0.1.0
 // Module to manage particle effects based on Overlays
 //
 //    +-------------------------+
