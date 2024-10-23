@@ -82,7 +82,6 @@ This struct is the main way we will manage particles in this module.
 
 [font=Courier New][b]Emitter.Init[/b][/font]
 [code]void Emitter.Init(int x, int y, ParticleDefinition * defs[], int defCount, int emitAmount, int maxParticles);[/code]
-
 Initializes the emitter, has to be run once, before invoking any other method from the emitter.
 
 You will pass the following parameters
@@ -94,46 +93,30 @@ You will pass the following parameters
 
 [font=Courier New][b]Emitter.Update[/b][/font]
 [code]void Emitter.Update();[/code]
-
 This method will both run one step in the particle simulation and update their rendering on the screen using overlays.
 
 You normally run this once in repeatedly_execute_always, room_RepExec or some other method you use to run once per frame.
 
-#### `Emitter.Emit`
-```AGS Script
-bool Emitter.Emit();
-```
-
+[font=Courier New][b]Emitter.Emit[/b][/font]
+[code]void Emitter.Emit();[/code]
 Emits particles. The amount of particles emitted is the emitAmount set when you init the emitter.
 
 A random particle definition is selected from the set definitions arrays, and used to initialize each particle emitted individually.
 
-#### `Emitter.SetPosition`
-```AGS Script
-void Emitter.SetPosition(int x, int y);
-```
-
+[font=Courier New][b]Emitter.SetPosition[/b][/font]
+[code]void Emitter.SetPosition(int x, int y);[/code]
 Sets the position of the emitter on screen.
 
-#### `Emitter.SetDefinitions`
-```AGS Script
-void Emitter.SetDefinitions(ParticleDefinition * defs[], int defCount);
-```
-
+[font=Courier New][b]Emitter.SetDefinitions[/b][/font]
+[code]void Emitter.SetDefinitions(ParticleDefinition * defs[], int defCount);[/code]
 Sets the definitions hold by the emitter.
 
-#### `Emitter.ParticlesHitPoint`
-```AGS Script
-Particle * [] Emitter.ParticlesHitPoint(int x, int y);
-```
-
+[font=Courier New][b]Emitter.ParticlesHitPoint[/b][/font]
+[code]Particle * [] Emitter.ParticlesHitPoint(int x, int y);[/code]
 Get null terminated array of particles that overlaps with the given point.
 
-#### `Emitter.ParticlesHitRect`
-```AGS Script
-Particle * [] Emitter.ParticlesHitRect(int x, int y, int width, int height);
-```
-
+[font=Courier New][b]Emitter.ParticlesHitRect[/b][/font]
+[code]Particle * [] Emitter.ParticlesHitRect(int x, int y, int width, int height);[/code]
 Get null terminated array of particles that overlaps with the given rectangle.
 
 
@@ -145,25 +128,19 @@ It's managed by the emitter and they can be retrieved through specific methods i
 
 [font=Courier New][b]Particle.Life[/b][/font]
 [code]int attribute Particle.Life;[/code]
-
 The remaining life of the particle. It decrements on each update and the particle dies when its life is equal to or below zero.
 
 [font=Courier New][b]Particle.IsAlive[/b][/font]
 [code]bool Particle.IsAlive();[/code]
+Returns [b]true[/b] if the particle is still alive (i.e., its life is greater than zero), and [b]false[/b] otherwise.
 
-Returns `true` if the particle is still alive (i.e., its life is greater than zero), and `false` otherwise.
+[font=Courier New][b]Particle.HitsPoint[/b][/font]
+[code]bool Particle.HitsPoint(int x, int y);[/code]
+Returns [b]true[/b] if the particle overlaps the given point (x, y). The particle is assumed to be a rectangle for the purpose of hit detection.
 
-#### `Particle.HitsPoint`
-```AGS Script
-bool Particle.HitsPoint(int x, int y);
-```
-Returns `true` if the particle overlaps the given point (x, y). The particle is assumed to be a rectangle for the purpose of hit detection.
-
-#### `Particle.HitsRect`
-```AGS Script
-bool Particle.HitsRect(int x, int y, int width, int height);
-```
-Returns `true` if the particle overlaps the given rectangle (x, y, width, height). The particle is assumed to be a rectangle for the purpose of hit detection.
+[font=Courier New][b]Particle.HitsRect[/b][/font]
+[code]bool Particle.HitsRect(int x, int y, int width, int height);[/code]
+Returns [b]true[/b] if the particle overlaps the given rectangle (x, y, width, height). The particle is assumed to be a rectangle for the purpose of hit detection.
 
 
 [size=12pt][b]ParticleDefinition[/b][/size]
@@ -175,127 +152,89 @@ When you set the value of them, it's usually a good idea to create a function to
 [font=Courier New][b]ParticleDefinition.Sprite[/b][/font]
 [code]int ParticleDefinition.Sprite;[/code]
 
-The sprite used for the particle. If `SpriteBegin` and `SpriteEnd` are set, this defines the initial frame of the particle animation.
+The sprite used for the particle. If [font=Courier New]SpriteBegin[/font] and [font=Courier New]SpriteEnd[/font] are set, this defines the initial frame of the particle animation.
 
-#### `ParticleDefinition.OffsetX`
-```AGS Script
-int ParticleDefinition.OffsetX;
-```
+[font=Courier New][b]ParticleDefinition.OffsetX[/b][/font]
+[code]int ParticleDefinition.OffsetX;[/code]
 The horizontal offset from the emitter's position when the particle is emitted.
 
-#### `ParticleDefinition.OffsetY`
-```AGS Script
-int ParticleDefinition.OffsetY;
-```
+[font=Courier New][b]ParticleDefinition.OffsetY[/b][/font]
+[code]int ParticleDefinition.OffsetY;[/code]
 The vertical offset from the emitter's position when the particle is emitted.
 
-#### `ParticleDefinition.LifeTotal`
-```AGS Script
-int ParticleDefinition.LifeTotal;
-```
+[font=Courier New][b]ParticleDefinition.LifeTotal[/b][/font]
+[code]int ParticleDefinition.LifeTotal;[/code]
 The total lifetime of the particle, in update loops. This value is used to initialize the particle's life when it is emitted.
 
-#### `ParticleDefinition.VelX`
-```AGS Script
-int ParticleDefinition.VelX;
-```
-The initial horizontal velocity of the particle, in thousandths of a pixel per update loop.
+[font=Courier New][b]ParticleDefinition.VelX[/b][/font]
+[code]int ParticleDefinition.VelX;[/code]
+The initial horizontal velocity of the particle, in thousandths of a pixel per update loop. It's in X direction, so positive numbers moves particle to right.
 
-#### `ParticleDefinition.VelY`
-```AGS Script
-int ParticleDefinition.VelY;
-```
-The initial vertical velocity of the particle, in thousandths of a pixel per update loop.
+[font=Courier New][b]ParticleDefinition.VelY[/b][/font]
+[code]int ParticleDefinition.VelY;[/code]
+The initial vertical velocity of the particle, in thousandths of a pixel per update loop. It's in Y direction, so positive numbers moves particle upwards.
 
-#### `ParticleDefinition.Gravity`
-```AGS Script
-int ParticleDefinition.Gravity;
-```
+[font=Courier New][b]ParticleDefinition.Gravity[/b][/font]
+[code]int ParticleDefinition.Gravity;[/code]
 The vertical acceleration applied to the particle over time (gravity), in thousandths of a pixel per update loop.
 
-#### `ParticleDefinition.SpriteBegin`
-```AGS Script
-int ParticleDefinition.SpriteBegin;
-```
+[font=Courier New][b]ParticleDefinition.SpriteBegin[/b][/font]
+[code]int ParticleDefinition.SpriteBegin;[/code]
 The initial sprite frame of a sequential sprite range.
 
-#### `ParticleDefinition.SpriteEnd`
-```AGS Script
-int ParticleDefinition.SpriteEnd;
-```
+[font=Courier New][b]ParticleDefinition.SpriteEnd[/b][/font]
+[code]int ParticleDefinition.SpriteEnd;[/code]
 The final sprite frame of a sequential sprite range.
 
-#### `ParticleDefinition.TransparencyBegin`
-```AGS Script
-int ParticleDefinition.TransparencyBegin;
-```
+[font=Courier New][b]ParticleDefinition.TransparencyBegin[/b][/font]
+[code]int ParticleDefinition.TransparencyBegin;[/code]
 The transparency level when the particle is emitted. A value of 0 is fully opaque, and 100 is fully transparent.
 
-#### `ParticleDefinition.TransparencyEnd`
-```AGS Script
-int ParticleDefinition.TransparencyEnd;
-```
+[font=Courier New][b]ParticleDefinition.TransparencyEnd[/b][/font]
+[code]int ParticleDefinition.TransparencyEnd;[/code]
 The transparency level when the particle reaches the end of its life.
 
-#### `ParticleDefinition.WidthBegin`
-```AGS Script
-int ParticleDefinition.WidthBegin;
-```
+[font=Courier New][b]ParticleDefinition.WidthBegin[/b][/font]
+[code]int ParticleDefinition.WidthBegin;[/code]
 The width of the particle when it is emitted.
 
-#### `ParticleDefinition.WidthEnd`
-```AGS Script
-int ParticleDefinition.WidthEnd;
-```
+[font=Courier New][b]ParticleDefinition.WidthEnd[/b][/font]
+[code]int ParticleDefinition.WidthEnd;[/code]
 The width of the particle when it reaches the end of its life.
 
-#### `ParticleDefinition.HeightBegin`
-```AGS Script
-int ParticleDefinition.HeightBegin;
-```
+[font=Courier New][b]ParticleDefinition.HeightBegin[/b][/font]
+[code]int ParticleDefinition.HeightBegin;[/code]
 The height of the particle when it is emitted.
 
-#### `ParticleDefinition.HeightEnd`
-```AGS Script
-int ParticleDefinition.HeightEnd;
-```
+[font=Courier New][b]ParticleDefinition.HeightEnd[/b][/font]
+[code]int ParticleDefinition.HeightEnd;[/code]
 The height of the particle when it reaches the end of its life.
 
-#### `ParticleDefinition.Bounces`
-```AGS Script
-bool ParticleDefinition.Bounces;
-```
+[font=Courier New][b]ParticleDefinition.Bounces[/b][/font]
+[code]bool ParticleDefinition.Bounces;[/code]
 Determines whether the particle should bounce when it hits the ground.
 
-#### `ParticleDefinition.GroundY`
-```AGS Script
-int ParticleDefinition.GroundY;
-```
+[font=Courier New][b]ParticleDefinition.GroundY[/b][/font]
+[code]int ParticleDefinition.GroundY;[/code]
 The vertical position that the particle will treat as the ground for bounce detection. If this is not set, the particle will not recognize any ground.
 
-#### `ParticleDefinition.BlendMode`
-```AGS Script
-BlendMode ParticleDefinition.BlendMode;
-```
+[font=Courier New][b]ParticleDefinition.BlendMode[/b][/font]
+[code]BlendMode ParticleDefinition.BlendMode;[/code]
 The blend mode to use when rendering the particle.
 
-**Compatibility:** This is only available in AGS 4.0 and above.
+[i]Compatibility:[/i] This is only available in AGS 4.0 and above.
 
-#### `ParticleDefinition.Angle`
-```AGS Script
-float ParticleDefinition.Angle;
-```
+[font=Courier New][b]ParticleDefinition.Angle[/b][/font]
+[code]float ParticleDefinition.Angle;[/code]
 The initial rotation angle of the particle, in degrees (0 to 360).
 
-**Compatibility:** This is only available in AGS 4.0 and above.
+[i]Compatibility:[/i] This is only available in AGS 4.0 and above.
 
-#### `ParticleDefinition.RotationSpeed`
-```AGS Script
-float ParticleDefinition.RotationSpeed;
-```
+[font=Courier New][b]ParticleDefinition.RotationSpeed[/b][/font]
+[code]float ParticleDefinition.RotationSpeed;[/code]
 The speed at which the particle rotates, in degrees per update loop.
 
-**Compatibility:** This is only available in AGS 4.0 and above.
+[i]Compatibility:[/i] This is only available in AGS 4.0 and above.
 
 [/spoiler]
 
