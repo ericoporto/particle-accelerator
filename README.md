@@ -1,9 +1,21 @@
 # Particles
 Particle Script Module for AGS
 
+## Overview
+
+This module is meant to help you manage particles on screen, which can be used for visual effects or even for game related actions.
+
+It has two base concepts, the emitter, which is the source and owner of the effect you want to devise, and the particles, which run a small piece of logic repeatedly and syncs itself to a visual representation as AGS Overlays.
+
+There is an additional concept which this module uses called the particle definition, which is a simple object that has no logic, but it has a series of properties, which represents the initial configuration and instructions a particle will receive, including characteristics it should have, how it should behave (using physics concepts) and how it should look.
+
+An emitter owns a collection of particle definitions (an array), and when it emits each particle it selects a particle definition from its collection at random, and assigns it to a particle, which is then emitted.
+
+Because this collection of definitions can be big, you can use any random process you want (with your own probability distributions) to create this collection. Because the emitter samples this collection at random, the produced particles will have matching distribution (at least visually) to the one used to generate the array of definitions.
+
 ## Usage
 
-Here is a simple example
+Here is a simple example, to quickstart using this module and give an idea of how it works
 
 ```AGS Script
 
@@ -284,3 +296,10 @@ float ParticleDefinition.RotationSpeed;
 The speed at which the particle rotates, in degrees per update loop.
 
 **Compatibility:** This is only available in AGS 4.0 and above.
+
+
+## Note
+
+This module is considered in beta stage, and there is probably a lot missing in it, as an example it can't yet produce room overlays (I haven't figured how I should manage them in the pool that is used behind the scenes).
+
+Please play with it and give me feedback and ideas you have. Still, there is a lot that can be done with it already!
